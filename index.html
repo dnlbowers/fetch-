@@ -11,12 +11,26 @@
 
     </div>
     <script>
-        fetch("https://ci-swapi.herokuapp.com/api/")
-        .then(response => response.json())
-        .then(data => {
-           document.getElementById("content").innerText = data.people; 
-        })
+        // fetch("https://ci-swapi.herokuapp.com/api/")
+        // .then(response => response.json())
+        // .then(data => {
+        //    document.getElementById("content").innerText = data.people; 
+        // })
+        // .catch((e) => {
+        //     console.error("Error: ", e);
+        // });
 
+        // simplify for readability using call back function
+        fetch("https://ci-swapi.herokuapp.com/api/")
+            .then(response => response.text()) // or .json()
+            .then(data => displayData(data))
+            .catch((e) => {
+                console.log("Error: ", e);
+            })
+
+        function displayData(data) {
+            document.getElementById("content").innerText = data;
+        }
     </script>
 </body>
 </html>
